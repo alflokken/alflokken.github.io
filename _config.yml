@@ -26,13 +26,8 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Alf Løkken
-  email: al@proton.me # change to your email address
   links:
-    # The first element serves as the copyright owner's link
-    #- https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/alflokken # change to your GitHub homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://github.com/alflokken
     - https://www.linkedin.com/in/alflokken
 
 # Site Verification Settings

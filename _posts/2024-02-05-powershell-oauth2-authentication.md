@@ -8,7 +8,7 @@ tags:
   - PowerShell
   - OAuth2
 ---
-
+{% include analytics.html %}
 This quick guide helps you get started with OAuth2 in PowerShell using the [PSAuthClient](https://github.com/alflokken/PSAuthClient) module. You can use any OAuth2 or OpenID Connect (OIDC) compliant provider, as long as it supports standard authorization and token endpoints— Spotify is just used here as an example.
 
 This is a practical starting point for using OAuth2 in PowerShell, if you're looking to understand the underlying concepts in more detail, [auth0](https://auth0.com/intro-to-iam/what-is-oauth-2) offers some great resources.

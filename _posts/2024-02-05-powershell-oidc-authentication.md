@@ -19,7 +19,7 @@ This quick guide helps you get started with OpenID Connect (OIDC) in PowerShell 
 <sub>Interactive authentication, using PSAuthClient in PowerShell.</sub>
 
 ## Getting started
-Either install the module from PSGallery `Install-Module PSAuthClient -Scope:CurrentUser` or [download](https://github.com/alflokken/PSAuthClient/releases) and unzip to ‘$home\Documents\WindowsPowerShell\Module’.
+Either install the module from PSGallery `Install-Module PSAuthClient -Scope:CurrentUser` or [download](https://github.com/alflokken/PSAuthClient/releases) and unzip to ‘$home\Documents\WindowsPowerShell\Modules’.
 
 >The module is created and maintained by me, and the source code is available on [GitHub](https://github.com/alflokken/PSAuthClient). 
 {: .prompt-info }

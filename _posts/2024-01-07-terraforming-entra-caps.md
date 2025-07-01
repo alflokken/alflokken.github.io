@@ -1,6 +1,6 @@
 ---
 title: "Terraforming Your Existing Entra ID Conditional Access Policies"
-date: 2024-07-01T07:32:30+02:00
+date: 2025-07-01T07:32:30+02:00
 #last_modified_at:
 categories: [PowerShell, Terraform]
 tags:

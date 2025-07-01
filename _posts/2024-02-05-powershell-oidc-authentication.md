@@ -9,7 +9,7 @@ tags:
   - OIDC
   - Microsoft Graph
 ---
-{% include analytics.html %}
+
 This quick guide helps you get started with OpenID Connect (OIDC) in PowerShell using the [PSAuthClient](https://github.com/alflokken/PSAuthClient) module. You can use any OpenID Connect (OIDC) compliant provider, as long as it supports standard authorization and token endpoints— Microsoft Graph is just used here as an example.
 
 > For a similar guide on using OAuth2.0 see [this article](https://alflokken.github.io/posts/powershell-oauth2-authentication/).

@@ -30,7 +30,8 @@ OpenID Connect is an identity layer built on top of OAuth 2.0 that enables clien
 > This is a practical starting point for OIDC in PowerShell, if you're looking to understand the underlying concepts in more detail, [okta](https://developer.okta.com/docs/concepts/oauth-openid/) has some great resources.
 {: .prompt-tip }
 
-# Parameters
+
+## Parameters
 The parameters below are used (and modified) throughout the examples below, which use [Microsoft Graph](https://learn.microsoft.com/en-us/graph/auth/auth-concepts) as the OIDC/OAuth2.0 provider.
 
 ```powershell
@@ -48,10 +49,9 @@ $splat = @{
     }  
 }
 ```
-
-# Authorization Code Grants
-
+<br><p class="h2">Authorization Code Grants</p>
 The Authorization Code grant type is used by confidential and public clients to exchange an authorization code for an access token.
+
 
 ## Authorization Code Grant with Proof Key for Code Exchange (PKCE)
 

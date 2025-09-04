@@ -117,7 +117,7 @@ The following recommended policies support that progression by introducing more 
 - [Restrict device code flow and authentication transfer](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-authentication-flows)
 - [Block disallowed countries/regions](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-by-location) (Recommended in '[Plan your CA deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#recommendations)') 
 
-### Alternatives to Device Compliance <a id="alternative-to-device-compliance"></a>
+### Alternatives to Device Compliance <a id="alternative-to-device-compliance" href="#"></a>
 
 - [Require compliant or hybrid joined device for admins](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-alt-admin-device-compliand-hybrid)
 - [Require compliant, hybrid joined device OR MFA for all users](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-alt-admin-device-compliand-hybrid)
@@ -168,7 +168,7 @@ Conditional Access is evolving rapidly. These recommendations provide a solid fo
 - [Conditional Access Essentials: RMAUs, Named Locations, Authentication Strengths, Service Principals](https://www.welkasworld.com/post/conditional-access-essentials-rmaus-named-locations-authentication-strengths-service-principals) (excellent article with details on protecting groups)
 
 ## References
-<a id="ref1">1</a>: [Microsoft Entra authentication management operations reference guide](https://learn.microsoft.com/en-us/entra/architecture/ops-guide-auth#conditional-access-implementation) <a href="#design-principles">🔗</a> <br>
-<a id="ref2">2</a>: [Service dependencies in Microsoft Entra Conditional Access](https://learn.microsoft.com/en-us/entra/identity/conditional-access/service-dependencies) <a href="#design-principles">🔗</a> <br>
-<a id="ref3">3</a>: [Manage emergency access accounts](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access) <a href="#operational-resilience">🔗</a> <br>
-<a id="ref4">4</a>: [Plan a Conditional Access deployment - Naming standards for emergency access controls](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#naming-standards-for-emergency-access-controls) <a href="#operational-resilience">🔗</a> <br>
+<a id="ref1" href="#">1</a>: [Microsoft Entra authentication management operations reference guide](https://learn.microsoft.com/en-us/entra/architecture/ops-guide-auth#conditional-access-implementation) <a href="#design-principles">🔗</a> <br>
+<a id="ref2" href="#">2</a>: [Service dependencies in Microsoft Entra Conditional Access](https://learn.microsoft.com/en-us/entra/identity/conditional-access/service-dependencies) <a href="#design-principles">🔗</a> <br>
+<a id="ref3" href="#">3</a>: [Manage emergency access accounts](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access) <a href="#operational-resilience">🔗</a> <br>
+<a id="ref4" href="#">4</a>: [Plan a Conditional Access deployment - Naming standards for emergency access controls](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#naming-standards-for-emergency-access-controls) <a href="#operational-resilience">🔗</a> <br>

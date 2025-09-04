@@ -25,7 +25,7 @@ Either install the module from PSGallery `Install-Module PSAuthClient -Scope:Cur
 >The module is created and maintained by me, and the source code is available on [GitHub](https://github.com/alflokken/PSAuthClient). 
 {: .prompt-info }
 
-# Parameters
+## Parameters
 The parameters below are used (and modified) throughout the examples below, which use [Spotify](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) as the OAuth 2.0 provider.
 
 ```powershell

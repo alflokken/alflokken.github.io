@@ -1,8 +1,8 @@
 ---
-title: "Terraforming Your Existing Entra ID Conditional Access Policies"
+title: "Terraform Your Existing Entra ID Conditional Access Policies"
 date: 2025-07-01T07:32:30+02:00
 #last_modified_at:
-categories: [PowerShell, Terraform]
+categories: [Terraform]
 tags:
   - Terraform
   - PowerShell
@@ -20,7 +20,9 @@ This guide demonstrates how to import existing Microsoft Entra ID Conditional Ac
 
 For your convenience, all the scripts and required terraform files are available in the [blog-code-snippets](https://github.com/alflokken/blog-code-snippets/tree/main/terraform-ca-import) repository.
 
-# Steps to import Conditional Access Policies (CAPs)
+
+<br>
+<p class="h2">Steps to import Conditional Access Policies (CAPs)</p>
 
 ## 1. Setup the environment
 In the working directory, configure the `providers.tf` with your [tenant_id](https://learn.microsoft.com/en-us/sharepoint/find-your-office-365-tenant-id).
@@ -42,7 +44,7 @@ provider "azuread" {
 
 Run `terraform init` to initialize the Terraform directory and download the required providers:
 
-![terraform init]({{site.baseurl}}/assets/img/2024-01-07-terraforming/init.png){: .normal }
+![terraform init]({{site.baseurl}}/assets/img/2025-01-07-terraforming/init.png){: .normal }
 
 ## 2. Generate terraform import config
 Run the `.\1_generate-imports.ps1` script to generate `imports.tf`.
@@ -87,17 +89,17 @@ $content | Out-File "imports.tf" -Encoding utf8 -Force
 ```
 
 The resulting `imports.tf` will contain the necessary Terraform import statements for our CA and named locations: 
-![imports.tf sample]({{site.baseurl}}/assets/img/2024-01-07-terraforming/imports.png){: .normal }
+![imports.tf sample]({{site.baseurl}}/assets/img/2025-01-07-terraforming/imports.png){: .normal }
 
 ## 3. Import the configuration
 Run `terraform plan -generate-config-out="generated.tf"` to generate terraform configuration in `generated.tf`.
 
 > Expect errors like below, config generation is still [experimental](https://developer.hashicorp.com/terraform/language/import/generating-configuration). We will clean these up in the next step!
 {: .prompt-warning }
-![import errors]({{site.baseurl}}/assets/img/2024-01-07-terraforming/errors.png){: .normal }
+![import errors]({{site.baseurl}}/assets/img/2025-01-07-terraforming/errors.png){: .normal }
 
 The resulting file will look similar to this:
-![generated.tf]({{site.baseurl}}/assets/img/2024-01-07-terraforming/generated.png){: .normal }
+![generated.tf]({{site.baseurl}}/assets/img/2025-01-07-terraforming/generated.png){: .normal }
 
 ## 4. Clean Up the Config
 Run the `.\3_clean_files.ps1` script to clean the generated config files and split them into multiple files, this will get rid of most of the errors and warnings in the previous step.
@@ -139,11 +141,11 @@ remove-item imports.tf -Force
 ```
 
 The resulting files will look similar to this:
-![clean.tf]({{site.baseurl}}/assets/img/2024-01-07-terraforming/clean.png){: .normal }
+![clean.tf]({{site.baseurl}}/assets/img/2025-01-07-terraforming/clean.png){: .normal }
 
 ## 5. Moment of truth
 Run `terraform validate` to validate the configuration. If everything is correct, you should see a message like this:
-![clean.tf]({{site.baseurl}}/assets/img/2024-01-07-terraforming/valid.png){: .normal }
+![clean.tf]({{site.baseurl}}/assets/img/2025-01-07-terraforming/valid.png){: .normal }
 
 If you still encounter errors, you may need to resolve these manually, the 'AzureAd' Terraform provider is under development and new Conditional Access Policy features [often lag behind](https://github.com/hashicorp/terraform-provider-azuread/issues/1657). 
 

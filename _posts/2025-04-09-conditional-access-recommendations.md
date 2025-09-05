@@ -32,7 +32,7 @@ These are Microsoft's official planning and implementation recommendations for C
 - Provide multiple authentication methods for each user, using different communication channels.
 - Combine multiple Conditional Access controls to avoid lockouts:
   - Use Windows Hello for Business to satisfy MFA requirements at sign-in.
-  - Use trusted devices (hybrid-join or intune-managed) to satisfy strong authentication requirements without implicit MFA challenge.
+  - Use trusted devices (hybrid-join or Intune-managed) to satisfy strong authentication requirements without implicit MFA challenge.
   - Leverage risk-based policies that prevent access when the user or sign-in is at risk, in place of fixed MFA policies.
 - Do regular reviews of the exception groups.<sup>[1](#ref1)</sup>
 - Deploy password hash sync even if federated or using pass-through auth.
@@ -41,7 +41,7 @@ These are Microsoft's official planning and implementation recommendations for C
 - If using on-prem VPN with NPS extension, consider federating as a SAML app or plan how to disable or replace in an emergency. 
 
 ### Policy Deployment Process
-**Source:**[Plan a Conditional Access deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#deploy-conditional-access-policies)
+**Source:** [Plan a Conditional Access deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#deploy-conditional-access-policies)
 
 - Use [Microsoft's policy templates](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-policy-common?tabs=secure-foundation#template-categories) to get started with a secure baseline and expand from there.
 - Evaluate impact with:
@@ -67,7 +67,7 @@ These are Microsoft's official planning and implementation recommendations for C
 
 - [Migrate legacy risk policies](https://learn.microsoft.com/en-us/entra/id-protection/howto-identity-protection-configure-risk-policies#migrate-risk-policies-to-conditional-access) from Entra ID Protection to Conditional Access.
   - Legacy risk policies retire on October 1, 2026.
-- [Migrate to the Authentication Methods policy](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-methods-manage#migration-between-policies) from Legacy MFA (per-user mfa) and SSPR policies.
+- [Migrate to the Authentication Methods policy](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-methods-manage#migration-between-policies) from Legacy MFA (per-user MFA) and SSPR policies.
   - Legacy MFA/SSPR deprecation begins September 30, 2025.
 
 <hr>
@@ -87,7 +87,7 @@ The following recommended policies support that progression by introducing more 
 - [Block legacy authentication for all users](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-legacy-authentication)
 - [Securing security info registration](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-security-info-registration)
   - It’s recommended to use Temporary Access Pass (MFA) for registration of internal users.
-  - For guest users who need to register mfa in your directory, registration can be blocked outside a trusted network location.
+  - For guest users who need to register MFA in your directory, registration can be blocked outside a trusted network location.
 - [Require device compliance](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-device-compliance)
 
 > Device compliance may be challenging to enforce in practice - see [alternatives to device compliance below](#alternative-to-device-compliance).
@@ -112,8 +112,8 @@ The following recommended policies support that progression by introducing more 
 ### Uncategorized
 
 - [Require authentication strength for device registration](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-device-registration)
-  - External authentication methods are currently incompatible with authentication strength (use mfa grant control instead)
-  - To enforce CA user action 'Register or join devices', ensure the corresponding mfa requirement in 'Devices > Overview > Device Settings' is disabled.
+  - External authentication methods are currently incompatible with authentication strength (use MFA grant control instead)
+  - To enforce CA user action 'Register or join devices', ensure the corresponding MFA requirement in 'Devices > Overview > Device Settings' is disabled.
 - [Restrict device code flow and authentication transfer](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-authentication-flows)
 - [Block disallowed countries/regions](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-by-location) (Recommended in '[Plan your CA deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#recommendations)') 
 
@@ -133,7 +133,7 @@ While the following topics are not explicitly listed as part of Microsoft's cond
 
 - [Conditional Access for workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity) to protect service principals. 
 - [Conditional Access authentication context for PIM Role activation](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/just-in-time-access-to-groups-and-conditional-access-integration-in-privileged-i/2466926) to ensure elevated access is subject to just-in-time controls.
-- Reduce attack surface by monitoring and cleaning up [inactive users](https://learn.microsoft.com/en-us/entra/id-governance/create-access-review#create-a-single-stage-access-review), [stale guests accounts](https://learn.microsoft.com/en-us/entra/identity/users/clean-up-stale-guest-accounts) and unused service principals.
+- Reduce attack surface by monitoring and cleaning up [inactive users](https://learn.microsoft.com/en-us/entra/id-governance/create-access-review#create-a-single-stage-access-review), [stale guests accounts](https://learn.microsoft.com/en-us/entra/identity/users/clean-up-stale-guest-accounts) and [inactive workload identities](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/new-app-health-recommendations-in-microsoft-entra-workload-identities/2959984).
 - Use [macOS Platform Single Sign-on](https://learn.microsoft.com/en-us/entra/identity/devices/macos-psso) to enable strong, seamless authentication on macOS- similar to how WHfB is used on Windows devices.
 - Configure [Single Sign-On for Linux](https://learn.microsoft.com/en-us/entra/identity/devices/sso-linux?tabs=debian-install%2Cdebian-update%2Cdebian-uninstall) to improve authentication on supported distributions.
 - [Prevent token replay attacks](https://learn.microsoft.com/en-us/entra/identity/devices/protecting-tokens-microsoft-entra-id#token-theft--protect-against-replay) with [Conditional Access Token Protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-token-protection#requirements)
@@ -158,16 +158,20 @@ The table below summarizes license dependencies for features discussed in this a
 Conditional Access is evolving rapidly. These recommendations provide a solid foundation, but successful implementation depends on structured policy design and consistent review. For guidance on a scalable implementation, watch for my upcoming article on structured Conditional Access policy design.
 
 ### Further reading
+
 **Microsoft:**
 - [Common security policies for Microsoft 365 organizations](https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-identity-device-access-policies-common) (App protection and device compliance)
 - [Conditional Access optimization agent](https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-optimization) ("copilot" agent for CA)
 - [Protecting tokens in Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity/devices/protecting-tokens-microsoft-entra-id) (harden devices and CA token protection)
 - [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting)
 - [Developer guidance for Microsoft Entra Conditional Access](https://docs.azure.cn/en-us/entra/identity-platform/v2-conditional-access-dev-guide)
+
 **Other resource:**
+
 - [Conditional Access Essentials: RMAUs, Named Locations, Authentication Strengths, Service Principals](https://www.welkasworld.com/post/conditional-access-essentials-rmaus-named-locations-authentication-strengths-service-principals) (excellent article with details on protecting groups)
 
 ## References
+
 <a id="ref1" href="#">1</a>: [Microsoft Entra authentication management operations reference guide](https://learn.microsoft.com/en-us/entra/architecture/ops-guide-auth#conditional-access-implementation) <a href="#design-principles">🔗</a> <br>
 <a id="ref2" href="#">2</a>: [Service dependencies in Microsoft Entra Conditional Access](https://learn.microsoft.com/en-us/entra/identity/conditional-access/service-dependencies) <a href="#design-principles">🔗</a> <br>
 <a id="ref3" href="#">3</a>: [Manage emergency access accounts](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access) <a href="#operational-resilience">🔗</a> <br>

@@ -11,7 +11,7 @@ tags:
 Microsoft’s Conditional Access documentation is extensive, but the specific recommendations are scattered across multiple articles and sections, making it difficult to get a consolidated view. This article compiles all of Microsoft’s explicit Conditional Access recommendations from official documentation into one structured, actionable reference. Each recommendation includes a direct link to the source material for further context and detail.
 
 ## Design Guidelines
-These are Microsoft's official planning and implementation recommendations for Conditional Access. This section focuses on design principles, operational resilience, policy rollout, and session management — as distinct from specific policy templates, which are covered in the next section.
+This section covers on design principles, operational resilience, policy rollout, and session management — as distinct from specific policy templates, which are covered in the next section.
 
 ### Design principles 
 **Source:** [Plan a Conditional Access deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#recommendations)
@@ -20,7 +20,7 @@ These are Microsoft's official planning and implementation recommendations for C
 - Ensure that every app has at least one policy applied.
 - Minimize the number of policies by grouping users and apps covered by repetitive patterns.
 - Use protected action as another layer of security on attempts to create, modify or delete policies.
-- Assignment to policies should be implemented through groups, not individuals.<sup>[1](#ref1)</sup> 
+- Implement policy assignments through groups, not individuals.<sup>[1](#ref1)</sup> 
 - Ensure a consistent experience across Microsoft 365 client applications by implementing the same set of controls for services such as Exchange Online and SharePoint.<sup>[1](#ref1)</sup> <sup>[2](#ref2)</sup>
 
 > To protect Conditional Access assignment groups, consider using [role-assignable groups](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/groups-concept#how-are-role-assignable-groups-protected) and/or placing them in [restricted-management administrative units](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/admin-units-restricted-management) to prevent unauthorized modification.
@@ -38,7 +38,7 @@ These are Microsoft's official planning and implementation recommendations for C
 - Deploy password hash sync even if federated or using pass-through auth.
 - Maintain at least two cloud-only emergency permanent-admin accounts using *.onmicrosoft.com domain, phishing-resistant authentication (different to that of other admin accounts).<sup>[3](#ref3)</sup>
 - Implement disabled policies that act as secondary resilient access controls in outage or emergency access scenarios.<sup>[4](#ref4)</sup>
-- If using on-prem VPN with NPS extension, consider federating as a SAML app or plan how to disable or replace in an emergency. 
+- If using on-prem VPN with NPS extension, federate as a SAML app or plan how to disable or replace in an emergency. 
 
 ### Policy Deployment Process
 **Source:** [Plan a Conditional Access deployment](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#deploy-conditional-access-policies)
@@ -74,13 +74,13 @@ These are Microsoft's official planning and implementation recommendations for C
 
 ## Recommended Policies
 
-The ['Secure foundation'](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-policy-common?tabs=secure-foundation#tabpanel_1_secure-foundation) templates represents the minimum baseline that all organizations should implement first. The focus is to drive broad MFA adoption and device-based authentication.
+The ['Secure foundation'](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-policy-common?tabs=secure-foundation#tabpanel_1_secure-foundation) templates provide the minimum baseline that all organizations should implement first. These policies drive broad MFA adoption and device-based authentication, establishing essential security controls before advanced protections are implemented.
 
 ![recommended policies from microsoft documentation]({{site.baseurl}}/assets/img/2025-04-09-ca-recommendations/ca-doc.png){: .normal }
 
-Once that baseline is in place, organizations can move toward more advanced protections—focusing on risk-based controls, phishing-resistant authentication for admins, authentication strength, and alignment with a [Zero Trust model](https://learn.microsoft.com/en-us/security/zero-trust/deploy/identity).
+Once that baseline is in place, you can move toward more advanced protections. Focus on risk-based controls, phishing-resistant authentication for admins, authentication strength, and alignment with a [Zero Trust model](https://learn.microsoft.com/en-us/security/zero-trust/deploy/identity).
 
-The following recommended policies support that progression by introducing more granular and risk-aware access controls.
+The recommended policies below support this progression. They introduce more granular and risk-aware access controls.
 
 ### Secure foundation
 
@@ -96,7 +96,7 @@ The following recommended policies support that progression by introducing more 
 ### Zero Trust
 
 - [Require MFA authentication strength for all users](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-mfa-strength)
-  - It is recommended not to have any app exclusions for this policy, see '[Conditional Access behavior when an all resources policy has an app exclusion](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-cloud-apps#conditional-access-behavior-when-an-all-resources-policy-has-an-app-exclusion)'.
+  - Do not include any app exclusions for this policy, see '[Conditional Access behavior when an all resources policy has an app exclusion](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-cloud-apps#conditional-access-behavior-when-an-all-resources-policy-has-an-app-exclusion)'.
 - [Require MFA authentication strength for guests](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-guests-mfa-strength)
 - [Require MFA for risky sign-in](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-risk-based-sign-in)
 - [Require password change for risky users](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-risk-based-user)
@@ -146,7 +146,7 @@ The table below summarizes license dependencies for features discussed in this a
 | **License Tier**           | **Required For**                                                                                   |
 |----------------------------|----------------------------------------------------------------------------------------------------|
 | **Microsoft Entra ID P1** | - Conditional Access |
-| **Microsoft Entra ID P2** | - Risk-based policies  <br> - Access Reviews (group membership)  <br> - Privileged Identity Management (PIM) |
+| **Microsoft Entra ID P2** | - Risk-based policies <br> - Access Reviews (group membership) <br> - Privileged Identity Management (PIM) |
 | **Entra ID Governance**   | - Access Reviews (Inactive Users) |
 | **Workload ID Premium**   | - Conditional Access for Workload IDs (service principals) | 
 
@@ -155,7 +155,7 @@ The table below summarizes license dependencies for features discussed in this a
 
 ## What's Next?
 
-Conditional Access is evolving rapidly. These recommendations provide a solid foundation, but successful implementation depends on structured policy design and consistent review. For guidance on a scalable implementation, watch for my upcoming article on structured Conditional Access policy design.
+Conditional Access is evolving rapidly. These recommendations provide a solid foundation, but successful implementation requires structured policy design and consistent review. For guidance on scalable implementation, watch for my upcoming article on structured Conditional Access policy design.
 
 ### Further reading
 

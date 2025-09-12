@@ -1,0 +1,64 @@
+
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Global Policies Box -->
+  <rect x="350" y="50" width="200" height="80" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"/>
+  <text x="450" y="75" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1976D2">Global Policies</text>
+  <text x="450" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#1976D2">CA001: MFA or Compliant for all</text>
+  <text x="450" y="110" text-anchor="middle" font-family="Arial" font-size="10" fill="#1976D2">CA002: Block legacy auth</text>
+  <text x="450" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="#1976D2">CA003: Sessions controls</text>
+  
+  <!-- Arrows down to Users boxes -->
+  <path d="M 400 130 L 400 170" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 450 130 L 450 170" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 500 130 L 500 170" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Admin Users -->
+  <rect x="50" y="180" width="180" height="100" fill="#FFF3E0" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="140" y="205" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#F57C00">Admins</text>
+  <text x="140" y="220" text-anchor="middle" font-family="Arial" font-size="9" fill="#F57C00">Inherits: Global Policies</text>
+  <text x="140" y="235" text-anchor="middle" font-family="Arial" font-size="9" fill="#F57C00">CA100: Phishing-resistant</text>
+  <text x="140" y="250" text-anchor="middle" font-family="Arial" font-size="9" fill="#F57C00">CA101: Block risk for all apps</text>
+  <text x="140" y="265" text-anchor="middle" font-family="Arial" font-size="9" fill="#F57C00">CA102: Require PAW for App1</text>
+  
+  <!-- Internal Users -->
+  <rect x="260" y="180" width="180" height="100" fill="#E8F5E8" stroke="#388E3C" stroke-width="2" rx="5"/>
+  <text x="350" y="205" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#388E3C">Internals</text>
+  <text x="350" y="220" text-anchor="middle" font-family="Arial" font-size="9" fill="#388E3C">Inherits: Global Policies</text>
+  <text x="350" y="235" text-anchor="middle" font-family="Arial" font-size="9" fill="#388E3C">CA200: Device compliance and MFA</text>
+  <text x="350" y="250" text-anchor="middle" font-family="Arial" font-size="9" fill="#388E3C">CA201: App controls</text>
+  <text x="350" y="265" text-anchor="middle" font-family="Arial" font-size="9" fill="#388E3C">CA202: Session controls</text>
+  
+  <!-- Guest Users -->
+  <rect x="470" y="180" width="180" height="100" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+  <text x="560" y="205" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#7B1FA2">Guests</text>
+  <text x="560" y="220" text-anchor="middle" font-family="Arial" font-size="9" fill="#7B1FA2">Inherits: Global Policies</text>
+  <text x="560" y="235" text-anchor="middle" font-family="Arial" font-size="9" fill="#7B1FA2">CA300: Require MFA</text>
+  <text x="560" y="250" text-anchor="middle" font-family="Arial" font-size="9" fill="#7B1FA2">CA301: Restrict security info reg</text>
+  <text x="560" y="265" text-anchor="middle" font-family="Arial" font-size="9" fill="#7B1FA2">CA302: Session controls</text>
+  
+  <!-- Workload Users -->
+  <rect x="680" y="180" width="180" height="100" fill="#FFF8E1" stroke="#FF8F00" stroke-width="2" rx="5"/>
+  <text x="770" y="205" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#FF8F00">Workloads</text>
+  <text x="770" y="220" text-anchor="middle" font-family="Arial" font-size="9" fill="#FF8F00">Inherits: Global Policies</text>
+  <text x="770" y="235" text-anchor="middle" font-family="Arial" font-size="9" fill="#FF8F00">CA900: Block risk</text>
+  <text x="770" y="250" text-anchor="middle" font-family="Arial" font-size="9" fill="#FF8F00">CA901: Location restrictions spn1</text>
+  <text x="770" y="265" text-anchor="middle" font-family="Arial" font-size="9" fill="#FF8F00">CA902: Location restrictions spn2</text>
+  
+  <!-- Purpose-driven layer -->
+  <rect x="300" y="320" width="300" height="80" fill="#FCE4EC" stroke="#C2185B" stroke-width="2" rx="5"/>
+  <text x="450" y="345" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#C2185B">Purpose-Driven Policies (Applied as needed)</text>
+  <text x="450" y="365" text-anchor="middle" font-family="Arial" font-size="10" fill="#C2185B">Risk-based controls • Data protection • App-specific rules</text>
+  <text x="450" y="380" text-anchor="middle" font-family="Arial" font-size="10" fill="#C2185B">Applied on top of Users or global policies</text>
+  
+  <!-- Arrows from Userss to purpose-driven -->
+  <path d="M 140 280 L 350 320" stroke="#666" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <path d="M 350 280 L 400 320" stroke="#666" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <path d="M 560 280 L 500 320" stroke="#666" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <path d="M 770 280 L 550 320" stroke="#666" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

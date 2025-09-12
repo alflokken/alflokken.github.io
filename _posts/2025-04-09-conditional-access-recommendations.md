@@ -78,7 +78,7 @@ The ['Secure foundation'](https://learn.microsoft.com/en-us/entra/identity/condi
 
 ![recommended policies from microsoft documentation]({{site.baseurl}}/assets/img/2025-04-09-ca-recommendations/ca-doc.png){: .normal }
 
-Once that baseline is in place, you can move toward more advanced protections. Focus on risk-based controls, phishing-resistant authentication for admins, authentication strength, and alignment with a [Zero Trust model](https://learn.microsoft.com/en-us/security/zero-trust/deploy/identity).
+Once that baseline is in place, you can move toward more advanced protections. Focus on risk-based controls, phishing-resistant authentication for admins, authentication strength, and alignment with the [Zero Trust model](https://learn.microsoft.com/en-us/security/zero-trust/deploy/identity).
 
 The recommended policies below support this progression. They introduce more granular and risk-aware access controls.
 
@@ -155,7 +155,9 @@ The table below summarizes license dependencies for features discussed in this a
 
 ## What's Next?
 
-Conditional Access is evolving rapidly. These recommendations provide a solid foundation, but successful implementation requires structured policy design and consistent review. For guidance on scalable implementation, watch for my upcoming article on structured Conditional Access policy design.
+Conditional Access is evolving rapidly. These recommendations provide a solid foundation, but successful implementation requires structured policy design and consistent review.
+
+For practical guidance, see [Building Scalable Conditional Access – A Policy Framework for Zero Trust](https://alflokken.github.io/posts/conditional-access-framework/). It covers naming, layering, and organizing policies for complex environments.
 
 ### Further reading
 
@@ -176,3 +178,7 @@ Conditional Access is evolving rapidly. These recommendations provide a solid fo
 <a id="ref2" href="#">2</a>: [Service dependencies in Microsoft Entra Conditional Access](https://learn.microsoft.com/en-us/entra/identity/conditional-access/service-dependencies) <a href="#design-principles">🔗</a> <br>
 <a id="ref3" href="#">3</a>: [Manage emergency access accounts](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access) <a href="#operational-resilience">🔗</a> <br>
 <a id="ref4" href="#">4</a>: [Plan a Conditional Access deployment - Naming standards for emergency access controls](https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access#naming-standards-for-emergency-access-controls) <a href="#operational-resilience">🔗</a> <br>
+
+## Changelog
+- 2025-09-12: Updated the “What’s Next?” section to include a link to the CA Framework guide.
+- 2025-09-04: Initial version.

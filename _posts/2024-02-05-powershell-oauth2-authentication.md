@@ -1,5 +1,6 @@
 ---
 title: "PowerShell OAuth2 Authentication"
+description: A practical guide to OAuth2 authentication in PowerShell using PSAuthClient, with examples of PKCE, refresh tokens, and client credentials.
 date: 2024-02-05T15:34:30-04:00
 last_modified_at: 2025-06-28T15:34:30-04:00
 categories: [PowerShell, Authentication]

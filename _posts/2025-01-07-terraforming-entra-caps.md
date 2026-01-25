@@ -1,6 +1,7 @@
 ---
 title: "Terraform Your Existing Entra ID Conditional Access Policies"
 date: 2025-07-01T07:32:30+02:00
+description: Learn how to import existing Microsoft Entra ID Conditional Access policies into Terraform using PowerShell to enable Infrastructure as Code.
 #last_modified_at:
 categories: [Terraform]
 tags:

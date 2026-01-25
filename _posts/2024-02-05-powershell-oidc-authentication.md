@@ -1,5 +1,6 @@
 ---
 title: "PowerShell OpenID Connect (OIDC) Authentication"
+description: A practical guide to OpenID Connect authentication in PowerShell, covering OIDC flows, OAuth2 grants, and real-world examples using PSAuthClient.
 date: 2024-02-05T15:34:30-04:00
 last_modified_at: 2025-06-28T12:39:38-04:00
 categories: [PowerShell, Authentication]

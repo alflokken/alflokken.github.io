@@ -1,5 +1,6 @@
 ---
 title: "The Essential Guide to Microsoft's Conditional Access Recommendations"
+description: A consolidated, actionable guide to Microsoft Entra Conditional Access recommendations, with direct links to official documentation and policy guidance.
 date: 2025-09-04T19:42:30+02:00
 last_modified_at:
 categories: [Entra ID, Conditional Access]

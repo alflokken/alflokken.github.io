@@ -1,5 +1,6 @@
 ---
 title: Building Scalable Conditional Access - A Policy Framework for Zero Trust
+description: A practical framework for building scalable Conditional Access policies in Microsoft Entra ID, with structured naming, layered design, and Zero Trust alignment.
 date: 2025-09-12T07:32:30+02:00
 categories: [Entra ID]
 tags:

@@ -124,23 +124,25 @@ Authentication ceremony sequence:
 
 ### Authenticator attachment types
 
-FIDO2 authenticators fall into two attachment types: **platform** or **roaming**. The attachment type describes the authenticator’s logical relationship to the client platform, rather than its physical location, transport method, or how credentials are stored.
+FIDO2 authenticators fall into two attachment types: **platform** or **roaming**, though industry discussions may use different terms like "device-bound" or "portable" authenticators.
+
+The attachment type describes the authenticator’s logical relationship to the client platform, rather than its physical location, transport method, or how credentials are stored.
 
 #### Platform Authenticators
 
-Platform authenticators are authenticators that are built into an operating system or device platform and are typically accessed locally by the client through platform-specific authenticator APIs.
+Platform authenticators are authenticators that are built into an operating system or device platform and are typically accessed locally by the client through platform WebAuthn APIs.
 
 From a WebAuthn perspective, the platform owns the authenticator implementation, mediates credential selection, and governs the credential lifecycle. The relying party interacts with the authenticator indirectly through the client.
 
-* **Examples:** Windows Hello for Business, Touch ID/Face ID, Platform SSO for macOS, iCloud Keychain passkeys, Google Password Manager passkeys
+* **Examples:** Windows Hello for Business, iCloud Keychain passkeys, Google Password Manager passkeys
 * **Properties:** Credential lifecycle and protection are managed by the platform and may include device-bound storage, vendor-managed backup and synchronization, and hardware-backed (TPM, Secure Enclave, or TEE) or software-backed protection.
 * **Benefits:** Seamless user experience using device unlock mechanisms such as biometrics or PIN, without requiring external hardware.
 
 In some scenarios, the platform authenticator resides on a device separate from the client, most commonly a mobile phone, and is accessed through CTAP2 hybrid transport for cross-device authentication.
 
-#### Roaming Authenticators (cross-platform)
+#### Roaming Authenticators
 
-Roaming authenticators are independent authenticators that manage their own credentials and security boundary, separate from any single client platform. They are accessed by the client using the CTAP2 protocol over direct transports such as USB, NFC, or BLE and can be used across multiple devices.
+Roaming authenticators, also called cross-platform authenticator, are independent authenticators that manage their own credentials and security boundary, separate from any single client platform. They are accessed by the client using the CTAP2 protocol over direct transports such as USB, NFC, or BLE and can be used across multiple devices.
 
 The defining characteristic of a roaming authenticator is that the authenticator itself controls key storage, user verification, and credential lifecycle, rather than delegating these responsibilities to the operating system.
 
@@ -152,18 +154,26 @@ While platform and roaming authenticators rely on the same cryptographic mechani
 
 ---
 
-### Multi-device (syncable) passkeys
+### Syncable passkeys (multi-device credentials)
 
-Multi-device passkeys are WebAuthn credentials whose private keys are backed up and synchronized across a user's devices by a platform provider such as Apple, Google, or Microsoft. Backup and synchronization are handled by platform providers and are outside the scope of the FIDO2 specification.
+> "Multi-device credential" is the specification-defined term in WebAuthn, but it is rarely used in practice. These credentials are more commonly referred to as syncable or synced passkeys.
+{: .prompt-tip }
 
-From a WebAuthn perspective, these credentials are still accessed through a platform authenticator using local platform APIs. “Multi-device” describes a platform-managed property of credential availability, not a distinct authenticator type. The WebAuthn ceremony, credential format, and phishing-resistant guarantees are unchanged.
+Syncable passkeys are WebAuthn credentials whose private keys are backed up and synchronized across a user's devices by credential managers such as iCloud Keychain, Google Password Manager, or other third-party password managers.
 
-The key difference is the trust boundary. While authentication remains phishing-resistant, the effective security of a synced passkey depends on the platform provider’s account protection, recovery, and synchronization controls. If a user’s platform account is compromised, credentials may be restored on another device without the relying party’s visibility or control.
+In the case of syncable passkeys, the platform authenticator is accessed and supported through the following components:
 
-> While synced passkeys remain phishing-resistant during authentication, their overall security is coupled to the platform provider’s account security and recovery model.
-{: .prompt-danger } 
+* **Platform WebAuthn API:** Platform-specific implementation of WebAuthn (e.g., Authentication Services framework on iOS/macOS, Windows WebAuthn API)
+* **Credential manager:** The service that stores, backs up, and synchronizes private keys (e.g., iCloud Keychain, Google Password Manager)
 
-Multi-device passkeys are well suited to consumer scenarios where users operate across multiple personal devices. In enterprise environments that require hardware-backed, non-exportable credentials, relying parties can restrict registration to device-bound platform authenticators or roaming security keys through policy.
+The client invokes the platform WebAuthn API to perform credential operations. The platform authenticator is the component that generates, protects, and uses the private key and performs user verification, while any storage, backup, synchronization, or recovery mechanisms are handled the credential manager and are outside the scope of the FIDO2 specification.
+
+The key difference is the trust boundary. While authentication remains phishing-resistant, the effective security of a synced passkey depends on the credential manager's account protection, recovery, and synchronization controls. If a user's credential manager account is compromised, credentials may be restored on another device without the relying party's visibility or control.
+
+> While synced passkeys remain phishing-resistant during authentication, their overall security is coupled to the credential manager’s account security and recovery model.
+{: .prompt-danger }
+
+Syncable passkeys are well suited to consumer scenarios where users operate across multiple personal devices. In enterprise environments that require hardware-backed, non-exportable credentials, relying parties can restrict registration to device-bound platform authenticators or roaming security keys through policy.
 
 ---
 
@@ -217,7 +227,7 @@ For roaming hardware authenticators, attestation is commonly used to identify a 
 ✓ May attest to hardware-backed key storage (for example TPM, Secure Enclave, or Android hardware keystore)<br>
 ~ Can fall back to self attestation depending on platform<br>
 
-**Multi-device passkeys** (platform)<br>
+**Syncable passkeys** (platform)<br>
 ✗ Attestation cannot reliably assert a single device or hardware instance once credentials are synchronized<br>
 ✗ Limits the relying party’s ability to enforce device-specific guarantees, even though the credential remains phishing-resistant<br>
 
@@ -239,7 +249,7 @@ _Figure 2 - Same-device authentication using a local authenticator (platform or 
 
 From a WebAuthn perspective, this is the standard case. The client communicates directly with an authenticator it considers locally attached, whether the authenticator is internal or externally connected.
 
-This diagram illustrates same-device authentication at a high level, using either a platform or roaming authenticator. The client communicates directly with the local authenticator to perform authentication. The exact mechanism by which platform authenticator APIs are exposed to the client depends on the platform and browser implementation.
+This diagram illustrates same-device authentication at a high level, using either a platform or roaming authenticator. The client communicates directly with the local authenticator to perform authentication. The exact mechanism by which platform WebAuthn APIs are exposed to the client depends on the platform and browser implementation.
 
 ### Cross-device authentication (hybrid transport)
 
@@ -383,7 +393,7 @@ This glossary is provided as a convenient reference and to establish a baseline 
 
   A non-technical, marketing and UX-oriented term for a WebAuthn credential. Passkeys are public key credentials created and managed according to the FIDO2/WebAuthn standards.<br>
   <br>
-  The term is commonly used by platform providers to emphasize ease of use and cloud synchronization, but it does not represent a distinct technical credential type. Passkeys can be implemented as platform authenticators (built into the device or OS) or roaming authenticators (external devices such as security keys). They may be device-bound or multi-device, depending on the implementation.<br><br>
+  The term is commonly used by platform providers to emphasize ease of use and cloud synchronization, but it does not represent a distinct technical credential type. Passkeys can be implemented as platform authenticators (built into the device or OS) or roaming authenticators (external devices such as security keys). They may be device-bound or syncable, depending on the implementation.<br><br>
 </details>
 
 ### Related Terminology
@@ -401,3 +411,15 @@ This glossary is provided as a convenient reference and to establish a baseline 
 
   Authentication methods designed to prevent credential theft through phishing attacks. Examples include FIDO2/WebAuthn passkeys, which rely on origin binding and relying party verification, and PKI-based methods such as smart cards and client certificates using mutual TLS authentication.<br><br>
 </details>
+
+## Changelog
+
+* 2026-01-28: Made updates based on feedback from [Tim C. on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7421824296362135552?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7421824296362135552%2C7422002412418334720%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287422002412418334720%2Curn%3Ali%3Aactivity%3A7421824296362135552%29). Thanks for valuable input.
+  * Revised platform authenticator examples by removing "Touch ID/Face ID" and "Platform SSO for macOS," as these are not authenticators themselves but related components.
+    * Touch ID/Face ID are biometric user verification methods, while Platform SSO for macOS is an authentication framework that platform authenticators may integrate with.
+  * Improved the syncable passkeys section for better accuracy.
+    * Clarified the distinction between platform WebAuthn APIs and credential managers, which handle credential storage, backup, and sync.
+  * Updated terminology for clarity.
+    * Replaced most uses of the specification term "multi-device", which is rarely used in practice, with "syncable" or "synced" passkeys.
+    * Changed some references from "platform authenticator APIs" to "platform WebAuthn APIs".
+* 2026-01-25: Initial publication.

@@ -105,10 +105,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: alflokken/alflokken.github.io # <gh-username>/<repo>
-    repo_id: R_kgDOPDSIHQ
-    category: Announcements
-    category_id: DIC_kwDOPDSIHc4CsJl1
+    repo: #alflokken/alflokken.github.io # <gh-username>/<repo>
+    repo_id: #R_kgDOPDSIHQ
+    category: #Announcements
+    category_id: #DIC_kwDOPDSIHc4CsJl1
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
